@@ -39,5 +39,21 @@ public function __construct(){
         return view ('backend.product_edit',compact('product'));
     }
        
-    
+    public function product_update(Request $request){
+
+        Product::find ($request->id)->update([
+            'Product_Name'=>$request ->product_name,
+            'Product_Description'=>$request->product_description,
+            'Product_Price'=>$request->product_price,
+            'Product_Quantity'=>$request->product_quantity,
+            'Updated_at'=> Carbon::now()
+
+
+        ]);
+        return redirect('/product');
+    }
+    public function product_delete($id){
+        Product::findOrfail($id)->delete();
+        return back()->with('delete','Delete Successfully');
+    }
 }

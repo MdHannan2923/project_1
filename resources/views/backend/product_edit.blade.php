@@ -14,8 +14,9 @@
                         </div>
                     @endif
 
-                    <form action="" method="POST">
+                    <form action="{{url('/product/update')}}" method="post">
                       @csrf
+                      <input type="text" value="{{$product->id}}" name="id">
                     
       <div class="mb-3">
     <label class="form-label">Product Name</label>

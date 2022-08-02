@@ -9,11 +9,11 @@
                 <div class="card-header text-center  bg-success">Product View</div>
 
                 <div class="card-body">
-                    <!-- @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                    @if (session('delete'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session('delete') }}
                         </div>
-                    @endif -->
+                    @endif
 
                     <table class="table">
   <thead>
@@ -35,7 +35,10 @@
       <td>{{$value->Product_Price}}</td>
       <td>{{$value->Product_Quantity}}</td>
       <td><a href="{{url('/product/edit' ,$value->id)}} "  class="btn btn-outline-info">Edit</a>
-      <a href="" class="btn btn-outline-danger">Delete</a></td>
+      <form action="{{url('/product/delete',$value->id)}}" method="post">
+        @csrf
+        <button class="btn btn-outline-danger">Delete</button></form>
+      </td>
     </tr>
     @endforeach(); 
     
@@ -79,8 +82,9 @@
     <label class="form-label">Product Quantity</label>
     <input type="number" name="product_quantity" placeholder="Enter Product Quantity" >
     
-  </div class="center">
-  <button type="submit" class="btn btn-success position=center" >Submit</button>
+  </div class="text-center">
+  <button type="submit" class="btn btn-info" >Submit</button>
+</div>
 </form>
 
 

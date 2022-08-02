@@ -11,13 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'FrontendController@index')->name('home');
 Route::get('/product', 'ProductController@index')->name('home');
 Route::post('/product/insert', 'ProductController@product_insert')->name('home');
 Route::get('/product/edit/{id}', 'ProductController@product_edit')->name('home');
+Route::post('/product/update', 'ProductController@product_update')->name('home');
+Route::post('/product/delete/{id}', 'ProductController@product_delete')->name('home');
